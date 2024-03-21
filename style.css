@@ -1,0 +1,238 @@
+*{
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+}
+
+header{
+    background-color: black;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+}
+
+h1{
+    color: #fff;
+}
+
+.info-cont{
+    display: grid;
+    place-items: center;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    color: #fff;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.main{
+    display: grid;
+    height: calc(100vh - 100px);
+    background-color: darkgray;
+    grid-template-columns: .7fr .3fr;
+    padding: 10px;
+    gap: 10px;
+}
+
+.left-section{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-rows: .2fr .6fr .2fr;
+    gap: 10px;
+}
+
+.status-cont{
+    background-color: aliceblue;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+.stat{
+    display: grid;
+    grid-template-rows: .2fr .8fr;
+}
+
+.stat p{
+    font-size: calc(8px + 1vw);
+}
+
+.stat span{
+    font-size: calc(15px + 1vw);
+}
+
+
+.graph{
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.chart{
+    width: 100px;
+}
+
+
+
+.right-section{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    
+}
+
+
+.btns-cont{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap:10px;
+
+}
+
+.btn{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 250ms;
+    font-size: calc(10px + .4vw);
+}
+
+
+.btn:hover{
+    background-color: black;
+    color: #fff;
+    letter-spacing: 10px;
+}
+
+.recent-act{
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 15px 20px;
+    font-variant: small-caps;
+    display: grid;
+    grid-template-rows: .1fr .9fr;
+}
+
+.footer{
+    background-color: azure;
+    border-radius: 10px;
+}
+
+.deposit-cont, .withdraw-cont{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: grid;
+    place-items: center;
+    transition: all 250ms;
+}
+
+.deposit-form, .withdraw-form{
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+}
+
+.form-title-cont{
+    display: flex;
+}
+
+.form-title-cont h4{
+    font-size: calc(13px + .4vw);
+    align-items: center;
+}
+
+.right{
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.transCont{
+    display: block;
+}
+
+.transaction{
+    display: flex;
+    padding: 10px;
+    font-size: calc(10px + 1vw);
+    box-shadow: 0 0 5px .2px #000;
+    margin: 15px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.desc{
+    color: #000;
+}
+
+.price{
+    margin-left: auto;
+}
+.transCont{
+    overflow-x: scroll;
+}
+
+@media screen and (max-width:1000px){
+
+    body{
+        height: auto;
+    }
+
+
+    header{
+        padding: 0 calc(1vw + 10px);
+    }
+
+    h1{
+        font-size: calc(5vw + 10px);
+    }
+
+    .deposit-form, .withdraw-form{
+        width: 80vw;
+    }
+
+    .form-title-cont h4{
+        font-size: 25px;
+    }
+
+
+    .deposit-form > *, .withdraw-form > *{
+        font-size: 20px;
+    }
+    
+    .graph{
+        padding: 0;
+    }
+
+    .right-section{
+        grid-template-rows: 50% 50%;
+    }
+
+    .main{
+        grid-template-columns: 1fr;
+        grid-template-rows: calc(50vh - 55px) calc(50vh - 55px);
+    }
+
+    .left-section{
+        grid-template-rows: .2fr .8fr;
+    }
+
+    /* .recent-act{
+        
+    } */
+
+    .footer{
+        display: none;
+    }
+}

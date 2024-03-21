@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
+    <title>Expense Tracker</title>
+</head>
+<body>
+    
+    <header>
+        <h1>Expense Tracker</h1>
+        <div class="info-cont">
+            i
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="left-section">
+            <div class="status-cont">
+                <div class="stat crnt-amt">	
+                    <p>Balance</p>
+                    <span class="balance-ind">$0000</span>
+                </div>
+
+                <div class="stat spent-amt">
+                    <p>Expenditure</p>
+                    <span class="expenditure-ind">$0000</span>
+                </div>
+            </div>
+
+            <div class="graph">
+                <canvas id="myChart" ></canvas>
+            </div>
+
+            <div class="footer">
+
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="btns-cont">
+                <button class="btn" onclick="openForm('.deposit-cont')">Deposit</button>
+                <button class="btn" onclick="openForm('.withdraw-cont')">Withdraw</button>
+                <button class="btn" onclick="showTransactions()">See Transactions</button>
+            </div>
+
+            <div class="recent-act">
+                <h4>Recent Activity</h4>
+                <div class="transCont">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="deposit-cont" style="opacity: 0; display: none;">
+        <form class="deposit-form" name="depositForm">
+            <div class="form-title-cont">
+                <h4>Deposit Form</h4>
+                <h4 class="right" onclick="closeForm()">&times;</h4>
+            </div>
+            <input type="text" class="depNote" placeholder="Something to note..." name="deposit-note"/>
+            <input type="number" class="amt" placeholder="Amount..?" name="amt" />
+            <input type="submit" name="sbt" onclick="addAmount()" />
+        </form>
+    </div>
+
+    <div class="withdraw-cont" style="opacity: 0; display: none;">
+        <form class="withdraw-form" name="withdrawForm">
+            <div class="form-title-cont">
+                <h4>Withdraw Form</h4>
+                <h4 class="right" onclick="closeForm()">&times;</h4>
+            </div>
+            <input type="text" placeholder="Something to note..." name="withdrawnote"/>
+            <input type="number" placeholder="Amount..?" name="amt" />
+            <input type="submit" name="sbt" value="Withdraw" onclick="withdrawAmount()"/>
+        </form>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
