@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>Expense Tracker</title>
 </head>
 <body>
@@ -43,7 +43,7 @@
             <div class="btns-cont">
                 <button class="btn" onclick="openForm('.deposit-cont')">Deposit</button>
                 <button class="btn" onclick="openForm('.withdraw-cont')">Withdraw</button>
-                <button class="btn" onclick="showTransactions()">See Transactions</button>
+                <button class="btn" onclick="showAllTransactions()">See Transactions</button>
             </div>
 
             <div class="recent-act">
@@ -54,14 +54,25 @@
         </div>
     </div>
 
+
+    <div class="all-transaction-cont" style="display: none;">
+        <div class="form-title-cont">
+            <h4>Last 15 Transactions</h4>
+            <h4 class="right" onclick="showAllTransactions()">&times;</h4>
+        </div>
+        <div class="all-transaction-inner-cont">
+
+        </div>
+    </div>
+
     <div class="deposit-cont" style="opacity: 0; display: none;">
         <form class="deposit-form" name="depositForm">
             <div class="form-title-cont">
                 <h4>Deposit Form</h4>
                 <h4 class="right" onclick="closeForm()">&times;</h4>
             </div>
-            <input type="text" class="depNote" placeholder="Something to note..." name="deposit-note"/>
-            <input type="number" class="amt" placeholder="Amount..?" name="amt" />
+            <input type="text" class="depNote" placeholder="Something to note..." name="deposit-note" required />
+            <input type="number" class="amt" placeholder="Amount..?" name="amt" required />
             <input type="submit" name="sbt" onclick="addAmount()" />
         </form>
     </div>
@@ -72,9 +83,9 @@
                 <h4>Withdraw Form</h4>
                 <h4 class="right" onclick="closeForm()">&times;</h4>
             </div>
-            <input type="text" placeholder="Something to note..." name="withdrawnote"/>
+            <input type="text" placeholder="Something to note..." name="withdrawnote" required />
             <input type="number" placeholder="Amount..?" name="amt" />
-            <input type="submit" name="sbt" value="Withdraw" onclick="withdrawAmount()"/>
+            <input type="submit" name="sbt" value="Withdraw" onclick="withdrawAmount()" required />
         </form>
     </div>
 
