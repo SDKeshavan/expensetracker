@@ -24,27 +24,29 @@ function refreshGraph(){
       }
     });
   }else{
-    new Chart("myChart", {
-      type: "line",
-      data: {
-        labels: xValues,
-        datasets: [{ 
-          data: depositSumArr,
-          borderColor: "green",
-          fill: false
-        }, { 
-          data: expenditurSumArr,
-          borderColor: "red",
-          fill: false
-        }]
-      },
-      options: {
-        legend: {display: false},
-        responsive: false
+
+    document.querySelector(".main").innerHTML = "<h2 style='text-align:center;position:absolute;width:100%'>Please visit through Mobile<h2>"
+  //   new Chart("myChart", {
+  //     type: "line",
+  //     data: {
+  //       labels: xValues,
+  //       datasets: [{ 
+  //         data: depositSumArr,
+  //         borderColor: "green",
+  //         fill: false
+  //       }, { 
+  //         data: expenditurSumArr,
+  //         borderColor: "red",
+  //         fill: false
+  //       }]
+  //     },
+  //     options: {
+  //       legend: {display: false},
+  //       responsive: false
   
   
-      }
-    });
+  //     }
+  //   });
   }
 
   
@@ -317,4 +319,13 @@ function toggleInfo(){
     },250)
   }
 
+}
+
+function clearData(){
+  localStorage.removeItem("nooftrans")
+  localStorage.removeItem("notes")
+  localStorage.removeItem("transactions")
+  localStorage.removeItem("dates")
+  localStorage.removeItem("balance")
+  location.reload()
 }
