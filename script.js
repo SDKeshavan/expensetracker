@@ -2,24 +2,52 @@
 function refreshGraph(){
   const xValues = dates;
 
-  new Chart("myChart", {
-    type: "line",
-    data: {
-      labels: xValues,
-      datasets: [{ 
-        data: depositSumArr,
-        borderColor: "green",
-        fill: false
-      }, { 
-        data: expenditurSumArr,
-        borderColor: "red",
-        fill: false
-      }]
-    },
-    options: {
-      legend: {display: false}
-    }
-  });
+  if(window.innerWidth<1000){
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{ 
+          data: depositSumArr,
+          borderColor: "green",
+          fill: false
+        }, { 
+          data: expenditurSumArr,
+          borderColor: "red",
+          fill: false
+        }]
+      },
+      options: {
+        legend: {display: false}
+  
+  
+      }
+    });
+  }else{
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{ 
+          data: depositSumArr,
+          borderColor: "green",
+          fill: false
+        }, { 
+          data: expenditurSumArr,
+          borderColor: "red",
+          fill: false
+        }]
+      },
+      options: {
+        legend: {display: false},
+        responsive: false
+  
+  
+      }
+    });
+  }
+
+  
 }
 
 let balance, expenditure
@@ -34,19 +62,27 @@ let depositSumArr = []
 let d = new Date()
 let today = `${d.getDate()+2}/${d.getMonth()+1}/${d.getFullYear()}`
 
-if(sessionStorage.balance){
-  balance = Number(sessionStorage.getItem("balance"))
-  notes = sessionStorage.getItem("notes").split(",")
-  transactions = sessionStorage.getItem("transactions").split(",")
-  dates = sessionStorage.getItem("dates").split(",")
-  nooftrans = sessionStorage.getItem("nooftrans").split(",")
+if(localStorage.balance){
+  balance = Number(localStorage.getItem("balance"))
+
+    notes = localStorage.getItem("notes").split(",")
+    transactions = localStorage.getItem("transactions").split(",")
+    dates = localStorage.getItem("dates").split(",")
+    nooftrans = localStorage.getItem("nooftrans").split(",")
+
 }else{
-  sessionStorage.balance = 0
-  sessionStorage.notes = ""
-  sessionStorage.transactions = ""
-  sessionStorage.dates = ""
-  sessionStorage.nooftrans = ""
-  balance = Number(sessionStorage.getItem("balance"))
+  localStorage.balance = 0
+  localStorage.notes = ""
+  localStorage.transactions = ""
+  localStorage.dates = ""
+  localStorage.nooftrans = ""
+  balance = Number(localStorage.getItem("balance"))
+
+  notes.splice(0,1)
+  transactions.splice(0,1)
+  dates.splice(0,1)
+  nooftrans.splice(0,1)
+
 }
 expenditure = 0
 
@@ -128,11 +164,11 @@ function addAmount(){
 
   console.log(notes)
 
-  sessionStorage.dates = String(dates)
-  sessionStorage.nooftrans = String(nooftrans)
-  sessionStorage.balance = Number(sessionStorage.balance) + Number(amt)
-  sessionStorage.transactions = String(transactions)
-  sessionStorage.notes = String(notes)
+  localStorage.dates = String(dates)
+  localStorage.nooftrans = String(nooftrans)
+  localStorage.balance = Number(localStorage.balance) + Number(amt)
+  localStorage.transactions = String(transactions)
+  localStorage.notes = String(notes)
   showTransactions()
   calcDaily()
   refreshGraph()
@@ -167,11 +203,11 @@ function withdrawAmount(){
       notes.splice(0,1)
     }
 
-    sessionStorage.dates = String(dates)
-    sessionStorage.nooftrans = String(nooftrans)
-    sessionStorage.balance = Number(sessionStorage.balance) - Number(amt)
-    sessionStorage.transactions = String(transactions)
-    sessionStorage.notes = String(notes)
+    localStorage.dates = String(dates)
+    localStorage.nooftrans = String(nooftrans)
+    localStorage.balance = Number(localStorage.balance) - Number(amt)
+    localStorage.transactions = String(transactions)
+    localStorage.notes = String(notes)
   }
 
   showTransactions()
@@ -183,11 +219,11 @@ function withdrawAmount(){
 function calcDaily(){
   let pointer=0, j, expenditureSum, depositSum, t
 
-  nooftrans.forEach(n =>{
+  for(let n = nooftrans.length-1; n>=0 && n>nooftrans.length-5; n--){
     expenditureSum = 0
     depositSum = 0
-    for(j = pointer; j < pointer+Number(n); j++){
-      // console.log(pointer+n)
+    for(j = pointer; j < pointer+nooftrans[n]; j++){
+      // console.log(pointer+n)  
       // console.log(transactions[j]) 
       t = Number(transactions[j])
       if(t<0){
@@ -201,7 +237,7 @@ function calcDaily(){
     expenditurSumArr.push(expenditureSum)
     pointer += Number(n)
 
-  })
+  }
 
   refreshGraph()
 }
@@ -258,6 +294,26 @@ function showAllTransactions(){
     setTimeout(() =>{
       allTransactions.style.display = "none"
 
+    },250)
+  }
+
+}
+
+function toggleInfo(){
+
+  const infoCont = document.querySelector(".info-info-cont");
+
+  if(infoCont.style.display == "none"){
+    infoCont.style.display = "grid"
+    main.style.filter = "blur(7px)"
+    setTimeout(()=>{
+      infoCont.style.opacity = 1
+    }, 10)
+  }else{
+    infoCont.style.opacity = 0
+    main.style.filter = "blur(0px)"
+    setTimeout(()=>{
+      infoCont.style.display = "none"
     },250)
   }
 
