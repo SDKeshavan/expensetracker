@@ -120,6 +120,15 @@ h1{
     letter-spacing: 10px;
 }
 
+.clr-btn{
+    height: 20px;
+    background-color: rgb(255, 107, 107);
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .recent-act{
     background-color: aliceblue;
     border-radius: 10px;
