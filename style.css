@@ -201,7 +201,6 @@ h1{
 .all-transaction-cont{
     position: absolute;
     inset: 10px;
-    top:90px;
     border-radius: 10px;
     background-color: #fff;
     padding: 15px;
