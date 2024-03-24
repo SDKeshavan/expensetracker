@@ -11,7 +11,7 @@
     
     <header>
         <h1>Expense Tracker</h1>
-        <div class="info-cont">
+        <div class="info-cont" onclick="toggleInfo()">
             i
         </div>
     </header>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="graph">
-                <canvas id="myChart" ></canvas>
+                <canvas id="myChart"></canvas>
             </div>
 
             <div class="footer">
@@ -52,18 +52,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="all-transaction-cont" style="display: none;">
+            <div class="form-title-cont">
+                <h4>Last 15 Transactions</h4>
+                <h4 class="right" onclick="showAllTransactions()">&times;</h4>
+            </div>
+            <div class="all-transaction-inner-cont">
+    
+            </div>
+        </div>
+
     </div>
 
 
-    <div class="all-transaction-cont" style="display: none;">
-        <div class="form-title-cont">
-            <h4>Last 15 Transactions</h4>
-            <h4 class="right" onclick="showAllTransactions()">&times;</h4>
-        </div>
-        <div class="all-transaction-inner-cont">
-
-        </div>
-    </div>
+    
 
     <div class="deposit-cont" style="opacity: 0; display: none;">
         <form class="deposit-form" name="depositForm">
@@ -87,6 +90,25 @@
             <input type="number" placeholder="Amount..?" name="amt" />
             <input type="submit" name="sbt" value="Withdraw" onclick="withdrawAmount()" required />
         </form>
+    </div>
+
+    <div class="info-info-cont" style="opacity: 0; display: none;">
+        <div class="info-inner-cont">
+            <div class="form-title-cont">
+                <h4>Infomation about Author</h4>
+                <h4 class="right" onclick="toggleInfo()">&times;</h4>
+            </div>
+
+            <div class="about-app">
+                This is an easy to use app which helps you can keep track of your
+                financial transactions by keeping of all transactions (15 Days) you make.
+                You can also keep a note where you can mention why you made that transaction.
+                <br>
+                <br>
+                <h4>Designed by</h4>
+                <h4><a href="https://www.linkedin.com/in/deveshkeshavans/">Devesh Keshavan S</a></h4>
+            </div>
+        </div>
     </div>
 
 
